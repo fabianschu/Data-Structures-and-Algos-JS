@@ -67,3 +67,28 @@ const minSubArrayLen = (nums, sum) => {
 }
 
 minSubArrayLen([2,3,1,2,4,3], 7);
+
+//TASK 3
+//Write a function that accepts a string and returns the length of the longest substring with all distinct characters
+
+const findLongestSubstring = (str) => {
+    let longest = 0;
+    let seen= {};
+    let start = 0;
+
+    for (let i = 0; i < str.length; i++) {
+        let char = str[i];
+        //check if char has been seen already, if so increment start of the window
+        if (seen[char]) {
+            start = Math.max(start, seen[char]);
+        }
+        //if window size larger than 'longest' set 'longest to window size'
+        longest = Math.max(longest, i - start + 1);
+
+        //note down 'index + 1' of char so that it can be used as starting point for nexrt window
+        seen[char] = i + 1;
+    }
+    return longest;
+}
+
+findLongestSubstring('thisisawesome');
