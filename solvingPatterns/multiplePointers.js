@@ -90,3 +90,35 @@ const averagePair = (inputArr, avg) => {
 }
 
 averagePair([1,2,3], 2.5);
+
+//TASK 4
+//check if str1 contains all chars of str2 in the same order
+
+const isSubsequence = (str1, str2) => {
+
+    if (str1.length > str2.length) {
+        return false;
+    }
+
+    let i = 0;
+    let counter = 0;
+
+    for (let j = 0; j < str2.length; j++) {
+        console.log('i, str[i]: ', i, str1[i]);
+        console.log('j, str[j]: ', j, str2[j]);
+        console.log(counter);
+        //the pointer i for str1 'lags behing' and is only incremented when a letter is found in str2
+        if (str1[i] === str2[j]) {
+            counter++;
+            i++;
+        }
+    }
+
+    if (counter === str1.length) {
+        return true;
+    }
+
+    return false;
+}
+
+isSubsequence('sing', 'sting')
