@@ -48,6 +48,7 @@ validAnagram('anagram', 'nagaras');
   
 
 //TASK 2
+//check if two numbers consist of the same digits which occur with the same frequency
 
 const sameFrequency = (n, m) => {
     let string1 = String(n);
@@ -93,3 +94,48 @@ const sameFrequency = (n, m) => {
 sameFrequency(2133,123);
 sameFrequency(23, 32);
 sameFrequency(214, 5)
+
+
+//TASK 3
+//count unique occurences of array elements (SORTED array)
+
+const countUniqueValues = (array) => {
+    if (array.length === 0) {
+        return 0;
+    }
+    
+    let counter = 0;
+  
+    for (let i = 0; i < array.length - 1; i++) {
+        if (i === 0) {
+            counter++;
+        }
+        if (array[i] != array[i - 1]) {
+            counter++;
+        }
+    }
+    return counter;
+  }
+  
+  countUniqueValues([1,2,3,4,4,4,7,7,12,12,13]);
+
+
+//TASK 4
+//check if a SORTED array contains duplicates
+
+const areThereDuplicates = (...args) => {
+    let counter = {};
+
+    for (let element of args) {
+        if (!counter[element]) {
+            counter[element] = 1;
+        }
+        else {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+areThereDuplicates(1,2,2);
