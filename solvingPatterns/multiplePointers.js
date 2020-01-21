@@ -1,4 +1,5 @@
-/* Multiple Pointers: can be used in certain contexts to avoid nested loops to achieve O(n) time complexity instead of O(n^2)*/
+//Multiple Pointers: can be used in certain contexts to avoid nested loops to achieve O(n) time complexity instead of O(n^2)
+//Solve these problems with O(n) time complexity (and avoid nested loops)
 
 // TASK 1
 // count the number of unique elements of a SORTED array (time: O(n))
