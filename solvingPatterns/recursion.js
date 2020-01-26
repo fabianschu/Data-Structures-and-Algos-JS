@@ -203,30 +203,83 @@ const flatten = array => {
     //   console.log('result store: ', result);
     //   console.log('lastElement: : ', lastElement);
     //   console.log(`type of last element: ${typeof(tmp[lastIndex])}`);
-  
-      if (typeof(lastElement) !== 'object') {
-        console.log('element is number')
-        result.push(lastElement);
-        tmp.pop();
-        helper(tmp);
-      }
-  
-      //const tempStor = [...lastElement];
-      tmp.pop();
-      console.log('popped array: ', tmp);
-      console.log('last Element: ', lastElement);
 
-      if (typeof(lastElement) !== 'object') {
-        tmp = [...tmp, lastElement];
-        return;
-      } 
-      tmp = [...tmp, ...lastElement];
-      returnhelper(tmp);
+        if (typeof(lastElement) !== 'object') {
+            console.log('element is number')
+            result.push(lastElement);
+            tmp.pop();
+            helper(tmp);
+        }
+    
+        //const tempStor = [...lastElement];
+        tmp.pop();
+        console.log('popped array: ', tmp);
+        console.log('last Element: ', lastElement);
+
+        if (typeof(lastElement) !== 'object') {
+            tmp = [...tmp, lastElement];
+            return;
+        } 
+        tmp = [...tmp, ...lastElement];
+        returnhelper(tmp);
     }
-  
+
     helper(array);
 
     return result.reverse();
-  }
-  
-  flatten([1, 2, [3,  [4] ], 5]);
+}
+
+flatten([1, 2, [3,  [4] ], 5]);
+
+
+//TASK 9
+//traversing an object and create sum of all even numbers
+const nestedEvenSum =  (obj) => {
+    let result = 0;
+    
+    const helper = x => {
+            
+            if (typeof(x) === 'object'){
+                
+                for (el in x) {
+    
+                if (typeof(x[el]) === "number" && x[el] % 2 === 0) {
+                    result += x[el]
+                }
+                
+                else if (typeof(x[el]) === "object") {
+                    helper(x[el])
+                }
+    
+                }
+            }
+    }
+    
+    helper(obj);
+    
+    return result;
+}
+
+
+var obj1 = {
+    outer: 2,
+    obj: {
+        inner: 2,
+        otherObj: {
+            superInner: 2,
+            notANumber: true,
+            alsoNotANumber: "yup"
+        }
+    }
+}
+
+var obj2 = {
+    a: 2,
+    b: {b: 2, bb: {b: 3, bb: {b: 2}}},
+    c: {c: {c: 2}, cc: 'ball', ccc: 5},
+    d: 1,
+    e: {e: {e: 2}, ee: 'car'}
+};
+
+  nestedEvenSum(obj1); // 6
+  nestedEvenSum(obj2); // 10
