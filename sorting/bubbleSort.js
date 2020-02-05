@@ -1,4 +1,4 @@
-const {swap} = require('./swap')
+const {swap} = require('./swap');
 
 const bubbleSort = (arr) => {
     let tmp = [...arr];
@@ -23,8 +23,6 @@ const bubbleSort = (arr) => {
         //console.log('full pass through')
         lastIndex--;
     }
-    console.log(iterationCounter);
-    console.log(tmp);
     return tmp;
 }
 
@@ -45,8 +43,7 @@ const bubbleSort2 = (arr) => {
             break;
         }
     }
-    console.log(iterationCounter);
-    console.log(arr);
+
     return arr;
 }
 
