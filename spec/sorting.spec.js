@@ -2,6 +2,7 @@ const {bubbleSort} = require('../sorting/bubbleSort.js');
 const {selectionSort} = require('../sorting/selectionSort');
 const {insertionSort} = require('../sorting/insertionSort');
 const {mergeSort} = require('../sorting/mergeSort');
+const {quickSort} = require('../sorting/quickSort');
 const {merge} = require('../sorting/merge');
 const {swap} = require('../sorting/swap');
 
@@ -119,5 +120,26 @@ describe('the mergeSort function', function() {
     });
     it("should return array with sorted elements for array duplicates", function() {
         expect(mergeSort([357, 4, 4, 2])).toEqual([2, 4, 4, 357]);
+    });
+})
+
+describe('the quickSort function', function() { 
+    it("should be a function", function() {
+        expect(typeof quickSort).toBe("function");
+    });
+    it("should return an array", function() {
+        expect(typeof quickSort([4, 2])).toBe("object");
+    });
+    it("should return array with sorted elements", function() {
+        expect(quickSort([4, 2])).toEqual([2, 4]);
+    });
+    it("should return array with sorted elements for array with uneven number of elements", function() {
+        expect(quickSort([1934, 357, 4, 46, 2])).toEqual([2, 4, 46, 357, 1934]);
+    });
+    it("should return array with sorted elements for array with even number of elements", function() {
+        expect(quickSort([357, 4, 46, 2])).toEqual([2, 4, 46, 357]);
+    });
+    it("should return array with sorted elements for array duplicates", function() {
+        expect(quickSort([357, 4, 4, 2])).toEqual([2, 4, 4, 357]);
     });
 })
