@@ -29,6 +29,6 @@ const insertionSort = arr => {
         arr[j+1] = tmp;
     }
     return arr;
-    }
+}
 
 module.exports.insertionSort = insertionSort;
