@@ -1,4 +1,4 @@
-const {merge} = require('./merge');
+const {merge} = require('./helpers');
 
 
 //a function to merge two sorted arrays with O(n+m) time and space complexity

@@ -3,8 +3,8 @@ const {selectionSort} = require('../sorting/selectionSort');
 const {insertionSort} = require('../sorting/insertionSort');
 const {mergeSort} = require('../sorting/mergeSort');
 const {quickSort} = require('../sorting/quickSort');
-const {merge} = require('../sorting/merge');
-const {swap} = require('../sorting/swap');
+const {merge, swap, getDigit} = require('../sorting/helpers');
+
 
 describe('the swap function', function() { 
     it("should be a function", function() {
@@ -143,3 +143,24 @@ describe('the quickSort function', function() {
         expect(quickSort([357, 4, 4, 2])).toEqual([2, 4, 4, 357]);
     });
 })
+
+describe('the getDigit helper function', function(){
+    it('is a function', function(){
+        expect(typeof getDigit).toBe('function');
+    });
+    it('returns a number', function(){
+        expect(typeof getDigit(32)).toBe('number');
+    });
+    it('returns the correct number', function(){
+        expect(getDigit(32, 1)).toBe(3);
+    });
+    it('returns the correct number', function(){
+        expect(getDigit(31312, 4)).toBe(3);
+    });
+    it('returns the correct number', function(){
+        expect(getDigit(7, 0)).toBe(7);
+    });
+    it('returns the correct number', function(){
+        expect(getDigit(1934791345, 4)).toBe(9);
+    });
+});

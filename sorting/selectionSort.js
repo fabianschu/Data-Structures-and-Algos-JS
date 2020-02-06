@@ -1,4 +1,4 @@
-const {swap} = require('./swap');
+const {swap} = require('./helpers');
 
 const selectionSort = (arr) => {
 
