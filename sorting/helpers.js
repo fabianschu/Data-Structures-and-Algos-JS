@@ -50,6 +50,24 @@ const getDigit = (num, digit) => {
     return num;
 }
 
+const digitCount = (num) => {
+    let tmp = 0;
+
+    const helper = num => {
+        tmp++;
+        num /= 10;
+        if(num < 1) {
+            return;
+        }
+        return helper(num);
+    }
+    
+    helper(num)
+    return tmp;
+}
+
+
+
 //swaps two elements in an array
 const swap = (arr, index1, index2) => {
     let tmp = arr[index2];
@@ -63,3 +81,4 @@ module.exports.swap = swap;
 module.exports.pivot = pivot;
 module.exports.getDigit = getDigit;
 module.exports.merge = merge;
+module.exports.digitCount = digitCount;

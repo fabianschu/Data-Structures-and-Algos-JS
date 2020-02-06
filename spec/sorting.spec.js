@@ -3,7 +3,7 @@ const {selectionSort} = require('../sorting/selectionSort');
 const {insertionSort} = require('../sorting/insertionSort');
 const {mergeSort} = require('../sorting/mergeSort');
 const {quickSort} = require('../sorting/quickSort');
-const {merge, swap, getDigit} = require('../sorting/helpers');
+const {merge, swap, getDigit, digitCount} = require('../sorting/helpers');
 
 
 describe('the swap function', function() { 
@@ -164,3 +164,21 @@ describe('the getDigit helper function', function(){
         expect(getDigit(1934791345, 4)).toBe(9);
     });
 });
+
+describe('the digitCount helper function', function(){
+    it('is a function', function(){
+        expect(typeof digitCount).toBe('function');
+    })
+    it('takes in one argument', function(){
+        expect(digitCount.length).toEqual(1);
+    })
+    it('returns the correct amount of digits for 25', function(){
+        expect(digitCount(25)).toEqual(2);
+    })
+    it('returns the correct amount of digits for 1', function(){
+        expect(digitCount(1)).toEqual(1);
+    })
+    it('returns the correct amount of digits for 00267', function(){
+        expect(digitCount(00267)).toEqual(3);
+    })
+})
