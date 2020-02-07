@@ -44,10 +44,7 @@ const pivot = (arr, start = 0, end = arr.length + 1) => {
 
 //returns the digit at a certain position
 const getDigit = (num, digit) => {  
-    num /= Math.pow(10, digit);
-    num = Math.floor(num);
-    num %= 10;
-    return num;
+    return Math.floor(Math.abs(num) / Math.pow(10,digit)) % 10;
 }
 
 const digitCount = (num) => {
@@ -77,7 +74,6 @@ const mostDigits = arr => {
     }
     return tmp;
 }
-mostDigits([3, 46, 135135, 45])
 
 //swaps two elements in an array
 const swap = (arr, index1, index2) => {
