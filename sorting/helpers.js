@@ -61,12 +61,23 @@ const digitCount = (num) => {
         }
         return helper(num);
     }
-    
+
     helper(num)
     return tmp;
 }
 
+const mostDigits = arr => {
+    let tmp = 0;
 
+    for (let i = 0; i < arr.length; i++) {
+        let numberOfDigits = digitCount(arr[i])
+        if(numberOfDigits > tmp) {
+            tmp = numberOfDigits;
+        }
+    }
+    return tmp;
+}
+mostDigits([3, 46, 135135, 45])
 
 //swaps two elements in an array
 const swap = (arr, index1, index2) => {
@@ -76,9 +87,9 @@ const swap = (arr, index1, index2) => {
     return arr;
 }
 
-
 module.exports.swap = swap;
 module.exports.pivot = pivot;
 module.exports.getDigit = getDigit;
 module.exports.merge = merge;
 module.exports.digitCount = digitCount;
+module.exports.mostDigits = mostDigits;

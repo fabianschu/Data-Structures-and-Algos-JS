@@ -3,7 +3,7 @@ const {selectionSort} = require('../sorting/selectionSort');
 const {insertionSort} = require('../sorting/insertionSort');
 const {mergeSort} = require('../sorting/mergeSort');
 const {quickSort} = require('../sorting/quickSort');
-const {merge, swap, getDigit, digitCount} = require('../sorting/helpers');
+const {merge, swap, getDigit, digitCount, mostDigits} = require('../sorting/helpers');
 
 
 describe('the swap function', function() { 
@@ -181,4 +181,23 @@ describe('the digitCount helper function', function(){
     it('returns the correct amount of digits for 00267', function(){
         expect(digitCount(00267)).toEqual(3);
     })
+    it('returns the correct amount of digits for 0', function(){
+        expect(digitCount(0)).toEqual(1);
+    })
+})
+
+describe('the mostDigits helper function', function(){
+    it('is a function', function(){
+        expect(typeof digitCount).toBe('function');
+    })
+    it('takes in one argument', function(){
+        expect(mostDigits.length).toEqual(1);
+    })
+    it('returns the correct amount of digits for [3, 46, 135135, 45]', function(){
+        expect(mostDigits([3, 46, 135135, 45])).toEqual(6);
+    })
+    it('returns the correct amount of digits for an array with one element 1', function(){
+        expect(mostDigits([1])).toEqual(1);
+    })
+
 })
