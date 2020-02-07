@@ -3,7 +3,7 @@ const {selectionSort} = require('../sorting/selectionSort');
 const {insertionSort} = require('../sorting/insertionSort');
 const {mergeSort} = require('../sorting/mergeSort');
 const {quickSort} = require('../sorting/quickSort');
-//const {radixSort} = require('../sorting/radixSort');
+const {radixSort} = require('../sorting/radixSort');
 const {merge, swap, getDigit, digitCount, mostDigits} = require('../sorting/helpers');
 
 
@@ -206,16 +206,19 @@ describe('the mostDigits helper function', function(){
 })
 
 describe('the radixSort  function', function(){
-    // it('is a function', function(){
-    //     expect(typeof radixSort).toBe('function');
-    // })
-    // it('takes in one argument', function(){
-    //     expect(radixSort.length).toEqual(1);
-    // })
-    // it('returns an array', function(){
-    //     expect(typeof radixSort([3, 46, 135135, 45])).toBe('object');
-    // })
-    // it('returns the correct amount of digits for an array with one element 1', function(){
-    //     expect(mostDigits([1])).toEqual(1);
-    // })
+    it('is a function', function(){
+        expect(typeof radixSort).toBe('function');
+    })
+    it('takes in one argument', function(){
+        expect(radixSort.length).toEqual(1);
+    })
+    it('returns an array', function(){
+        expect(typeof radixSort([3, 46, 135135, 45])).toBe('object');
+    })
+    it("should return array with sorted elements for array duplicates", function() {
+        expect(radixSort([357, 4, 4, 2])).toEqual([2, 4, 4, 357]);
+    });
+    it("should return array with sorted elements for array with uneven number of elements", function() {
+        expect(radixSort([1934, 357, 4, 46, 2])).toEqual([2, 4, 46, 357, 1934]);
+    });
 })
