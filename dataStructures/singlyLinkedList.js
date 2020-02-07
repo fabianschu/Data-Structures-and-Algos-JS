@@ -1,0 +1,53 @@
+class Node{
+    constructor(val){
+        this.val = val;
+        this.next = null;
+    }
+}
+
+class SinglyLinkedList{
+    constructor(){
+        this.length = 0;
+        this.head = null;
+        this.tail = null;
+    }
+    push(val){
+        //create a new instance of a node
+        let newNode = new Node(val);
+        //if list has been empty so far, the pushed item is the first and last list item at the same time
+        if(!this.head){
+            this.head = newNode;
+            this.tail = newNode;
+        //if there is already one or more items in the list
+        } else {
+            //take the item that currently is the last item and let it point to the new item
+            this.tail.next = newNode;
+            //then, set the last item of the list to be the new item
+            this.tail = newNode;
+        }
+        //increment the length of the list and return the new list
+        this.length++;
+        return this;
+    }
+    pop(){
+        if(this.length === 0){
+            return undefined;
+        }
+        //traverse to the second-last list element
+        let current = this.head;
+        while(current.next !== this.tail){
+            current = current.next;
+        }
+        //set previously second-to last item to be the new last item
+        this.tail = current;
+        //let the new last item point to null
+        current.next = null;
+        //adjust the length of the list
+        this.length--
+        //return the new list
+        return this;
+    }
+}
+
+let list = new SinglyLinkedList();
+list.push('hoho');
