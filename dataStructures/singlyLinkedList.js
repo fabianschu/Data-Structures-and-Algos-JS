@@ -73,7 +73,7 @@ class SinglyLinkedList{
         //set new head and let it point to previously first node
         if(this.length === 0){
             this.head = newNode;
-            this.tail = newNode;
+            this.tail = this.head;
         } else {
             newNode.next = this.head;
             this.head = newNode;
