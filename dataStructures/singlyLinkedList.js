@@ -82,19 +82,57 @@ class SinglyLinkedList{
         return this;
     }
     //gets value of node with specified index in linked list
-    get(val){
-        //if list is empty or the requested index val does not exist return undefined
-        if(val >= this.length || val < 0){
+    get(requIdx){
+        //if list is empty or the requested index val does not exist return null
+        if(requIdx >= this.length || requIdx < 0){
             return null;
         }
         let index = 0;
         let current = this.head;
-        while(index != val){
+        while(index != requIdx){
             current = current.next;
             index++;
         }
-        return current.val;
+        return current;
     }
+    //set the value of a node with a specified index to a specified value
+    set(requIdx, val){
+        let requestedNode = this.get(requIdx);
+        if (!requestedNode) return false;
+        requestedNode.val = val;
+        console.log(requestedNode.val);
+        return true;
+    }
+    //insert a node at a specified position
+    insert(requIdx, val){
+        //edge cases: invalid index, beginning and end of list
+        if(requIdx < 0 || requIdx > this.length) return false;
+        // double !! 
+        if(requIdx === 0) return !!this.unshift(val);
+        if(requIdx === this.length) return !!this.push(val);
+
+        //create a new node with the specified value
+        let newNode = new Node(val);
+        //iterate over list until you are at the node after which you want to insert the new node (here: prevNode)
+        let current = this.head;
+        while(current.next != this.get(requIdx)){
+            current = current.next;
+        }
+        let prevNode = current;
+        //save the node which is meant to come after the new node in a variable
+        let nextNode = prevNode.next;
+        //let the previous node point to the new node and the new node to the next node
+        prevNode.next = newNode;
+        newNode.next = nextNode;
+        this.length++;
+        return true;
+    }
+    //remove a node at a specified positiion
 }
+
+let list = new SinglyLinkedList();
+list.push('a');
+list.push('b');
+list.push('c');
 
 module.exports.SinglyLinkedList = SinglyLinkedList;

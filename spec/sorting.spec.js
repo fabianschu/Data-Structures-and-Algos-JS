@@ -205,7 +205,7 @@ describe('the mostDigits helper function', function(){
     })
 })
 
-describe('the radixSort  function', function(){
+describe('the radixSort function', function(){
     it('is a function', function(){
         expect(typeof radixSort).toBe('function');
     })
