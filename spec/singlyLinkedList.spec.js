@@ -92,32 +92,43 @@ describe('insert() method', function(){
 })
 
 describe('remove() method', function(){
-    let list = new SinglyLinkedList();
     it('accepts one input', function(){
+        let list = new SinglyLinkedList();
         expect(list.remove.length).toEqual(1);
     });
     it('returns true, if a node has been deleted succesfully in the middle', function(){
+        let list = new SinglyLinkedList();
         list.push('a');
         list.push('b');
         list.push('c');
-        expect(list.remove(1)).toEqual(true);
+        expect(list.remove(1).val).toEqual('b');
     })
     it('returns true, if a node has been deleted succesfully at the beginning', function(){
+        let list = new SinglyLinkedList();
         list.push('a');
         list.push('b');
         list.push('c');
-        expect(list.remove(0)).toEqual(true);
+        expect(list.remove(0).val).toEqual('a');
     })
-    it('returns true, if a node has been deleted succesfully at the end', function(){
+    it('returns true, if a node has been deleted succesfully at the end', function(){   
+        let list = new SinglyLinkedList();
         list.push('a');
         list.push('b');
         list.push('c');
-        expect(list.remove(2)).toEqual(true);
+        expect(list.remove(2).val).toEqual('c');
     })
     it('returns false, if an index is not valid', function(){
+        let list = new SinglyLinkedList();
         list.push('a');
         list.push('b');
         list.push('c');
-        expect(list.remove(20)).toEqual(false);
+        expect(list.remove(20)).toEqual(undefined);
     })
+})
+
+describe('reverse() method', function(){
+    it('accepts one input', function(){
+        let list = new SinglyLinkedList();
+        expect(list.remove.length).toEqual(1);
+    });
 })

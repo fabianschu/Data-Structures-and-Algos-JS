@@ -38,6 +38,7 @@ class SinglyLinkedList{
         while(current.next !== this.tail){
             current = current.next;
         }
+        let removedNode = current.next;
         //set previously second-to last item to be the new last item
         this.tail = current;
         //let the new last item point to null
@@ -50,7 +51,7 @@ class SinglyLinkedList{
             this.tail = null;
         }
         //return the new list
-        return this;
+        return removedNode;
     }
     shift(){
         if(this.length === 0){
@@ -128,9 +129,9 @@ class SinglyLinkedList{
     }
     //remove a node at a specified positiion
     remove(requIdx){
-        if(requIdx < 0 || requIdx > this.length) return false;
-        if(requIdx === 0) return !!this.shift();
-        if(requIdx === this.length) return !!this.pop();
+        if(requIdx < 0 || requIdx > this.length) return undefined;
+        if(requIdx === 0) return this.shift();
+        if(requIdx === this.length - 1) return this.pop();
 
         let current = this.head;
         while(current.next != this.get(requIdx)){
@@ -140,13 +141,13 @@ class SinglyLinkedList{
         let deleteNode = prevNode.next;
         prevNode.next = deleteNode.next;
         this.length--;
-        return true;
+        return deleteNode;
     }
 }
 
-let list = new SinglyLinkedList();
-list.push('a');
-list.push('b');
-list.push('c');
-
+// let list = new SinglyLinkedList();
+// list.push('a');
+// list.push('b');
+// list.push('c');
+// console.log(list.remove(1));
 module.exports.SinglyLinkedList = SinglyLinkedList;
