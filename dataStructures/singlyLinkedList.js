@@ -81,9 +81,20 @@ class SinglyLinkedList{
         this.length++;
         return this;
     }
+    //gets value of node with specified index in linked list
+    get(val){
+        //if list is empty or the requested index val does not exist return undefined
+        if(val >= this.length || val < 0){
+            return null;
+        }
+        let index = 0;
+        let current = this.head;
+        while(index != val){
+            current = current.next;
+            index++;
+        }
+        return current.val;
+    }
 }
 
-let list = new SinglyLinkedList();
-list.push('a');
-list.push('b');
-list.push('c');
+module.exports.SinglyLinkedList = SinglyLinkedList;
