@@ -41,13 +41,49 @@ class SinglyLinkedList{
         //set previously second-to last item to be the new last item
         this.tail = current;
         //let the new last item point to null
-        current.next = null;
+        this.tail.next = null;
         //adjust the length of the list
         this.length--
+        //edge case: only one item in the list
+        if(this.length === 0){
+            this.head = null;
+            this.tail = null;
+        }
         //return the new list
+        return this;
+    }
+    shift(){
+        if(this.length === 0){
+            return undefined;
+        }
+        //save value of current first node in a variable
+        let removedVal = this.head;
+        //set first value to be the second value and decrement length
+        this.head = this.head.next;
+        this.length--;
+        if(this.length === 0){
+            this.head = null;
+            this.tail = null;
+        }
+        //return value of removed node
+        return removedVal;
+    }
+    unshift(val){
+        let newNode = new Node(val);
+        //set new head and let it point to previously first node
+        if(this.length === 0){
+            this.head = newNode;
+            this.tail = newNode;
+        } else {
+            newNode.next = this.head;
+            this.head = newNode;
+        }
+        this.length++;
         return this;
     }
 }
 
 let list = new SinglyLinkedList();
-list.push('hoho');
+list.push('a');
+list.push('b');
+list.push('c');
