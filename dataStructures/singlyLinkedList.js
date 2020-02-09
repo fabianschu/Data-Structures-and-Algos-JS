@@ -100,7 +100,6 @@ class SinglyLinkedList{
         let requestedNode = this.get(requIdx);
         if (!requestedNode) return false;
         requestedNode.val = val;
-        console.log(requestedNode.val);
         return true;
     }
     //insert a node at a specified position
@@ -128,6 +127,21 @@ class SinglyLinkedList{
         return true;
     }
     //remove a node at a specified positiion
+    remove(requIdx){
+        if(requIdx < 0 || requIdx > this.length) return false;
+        if(requIdx === 0) return !!this.shift();
+        if(requIdx === this.length) return !!this.pop();
+
+        let current = this.head;
+        while(current.next != this.get(requIdx)){
+            current = current.next;
+        }
+        let prevNode = current;
+        let deleteNode = prevNode.next;
+        prevNode.next = deleteNode.next;
+        this.length--;
+        return true;
+    }
 }
 
 let list = new SinglyLinkedList();
