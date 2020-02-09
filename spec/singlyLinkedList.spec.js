@@ -127,8 +127,14 @@ describe('remove() method', function(){
 })
 
 describe('reverse() method', function(){
-    it('accepts one input', function(){
+    it('reverses a list of three elements', function(){
         let list = new SinglyLinkedList();
-        expect(list.remove.length).toEqual(1);
+        list.push('a');
+        list.push('b');
+        list.push('c');
+        list.reverse();
+        expect(list.head.val).toEqual('c');
+        expect(list.tail.val).toEqual('a');
+        expect(list.head.next.val).toEqual('b');
     });
 })

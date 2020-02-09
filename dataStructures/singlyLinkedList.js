@@ -143,11 +143,35 @@ class SinglyLinkedList{
         this.length--;
         return deleteNode;
     }
+    //reverse the order of the nodes without creating a copy
+    reverse(){
+        //change head and tail and create storage variable for current variable
+        let current = this.head;
+
+        this.head = this.tail;
+        this.tail = current;
+        
+        let next;
+        let prev = null;
+
+        for (let i = 0; i < this.length; i++){
+            //save the node that comes next in a variable so that we can use it next
+            next = current.next;
+            //let the node we are currently look at to point at the previous node (initially null)
+            current.next = prev;
+            //now: our current node is going to be what we said 'next' to be and previous ('prev') is going to be what our current node was
+            prev = current;
+            current = next;
+        }
+
+        return this;
+
+    }
 }
 
 // let list = new SinglyLinkedList();
 // list.push('a');
 // list.push('b');
 // list.push('c');
-// console.log(list.remove(1));
+// list.reverse();
 module.exports.SinglyLinkedList = SinglyLinkedList;
