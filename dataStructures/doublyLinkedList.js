@@ -14,7 +14,6 @@ class DoublyLinkedList {
         this.length = 0;
     }
 
-    
     push(val){
         let newNode = new Node(val);
         if(this.length === 0) {
