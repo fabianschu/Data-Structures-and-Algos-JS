@@ -96,8 +96,22 @@ class DoublyLinkedList {
         }
         return false
     }
-    insert(){
-        
+    insert(val, idx){
+        if (idx > this.length - 1 || idx < 0) return false;
+        if (idx === 0) {
+            this.unshift(idx);
+        } else if (idx === this.length - 1) {
+            this.push(idx);
+        } else {
+            let oldNode = this.get(idx);
+            let beforeNode = oldNode.prev;
+            let newNode = new Node(val);
+            beforeNode.next = newNode;
+            newNode.next = oldNode;
+            oldNode.prev = newNode;
+            newNode.prev = beforeNode;
+        }
+        return true;
     }
     remove(){
 
