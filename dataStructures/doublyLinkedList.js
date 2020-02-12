@@ -88,8 +88,13 @@ class DoublyLinkedList {
         }
         return currentNode;
     }
-    set(){
-
+    set(val, idx){
+        let currentNode = this.get(idx);
+        if (currentNode){
+            currentNode.val = val;
+            return true;
+        }
+        return false
     }
     insert(){
         
