@@ -55,7 +55,7 @@ class DoublyLinkedList {
         this.length--;
         return oldHead;
     }
-    unshift(){
+    unshift(val){
         let newNode = new Node(val);
         if (this.length === 0){
             this.head = newNode;
@@ -68,8 +68,25 @@ class DoublyLinkedList {
         this.length++;
         return this;
     }
-    get(){
-
+    get(idx){
+        if (this.length === 0 || idx > this.length - 1 || idx < 0) return undefined;
+        let currentIdx = 0;
+        let currentNode;
+        if (idx > Math.ceil(this.length / 2) - 1) {
+            currentNode = this.tail;
+            currentIdx = this.length -1;
+            while(currentIdx != idx) {
+                currentNode = currentNode.prev;
+                currentIdx--;
+            }
+        } else {
+            currentNode = this.head;
+            while(currentIdx != idx) {
+                currentNode = currentNode.next;
+                currentIdx++;
+            }
+        }
+        return currentNode;
     }
     set(){
 
