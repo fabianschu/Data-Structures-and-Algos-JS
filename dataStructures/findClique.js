@@ -27,7 +27,7 @@ class Graph{
         this.vertices.delete(deleteEl);
     }
 
-    findCliqueGreedy(){
+    findMaxCliqueGreedy(){
         let clique = [];
         let vertices = Array.from(this.vertices.keys());
         const rnd = Math.floor(Math.random() * vertices.length);
@@ -60,4 +60,4 @@ graph.addVertex('A', ['B', 'D']);
 graph.addVertex('B', ['A', 'D']);
 graph.addVertex('C', ['B']);
 graph.addVertex('D', ['B', 'D']);
-console.log(graph.findCliqueGreedy());
+console.log(graph.findMaxCliqueGreedy());
