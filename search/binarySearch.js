@@ -27,7 +27,6 @@ const binarySearch = (inputArr, val) => {
     }
     
     return -1;
-
 }
 
 //let arr = [5,6,10,13,14,18,30,34,35,37,40,44,64,79,84,86,95,96,98,99];
