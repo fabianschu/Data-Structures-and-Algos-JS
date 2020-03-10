@@ -43,6 +43,22 @@ class AvlTree {
         }
     }
 
+    getNode(val){
+        let currentNode = this.root;
+        while (currentNode) {
+            if(currentNode.val === val) {
+                return currentNode;
+            }
+            if(val < currentNode.val) {
+                currentNode = currentNode.left;
+            }
+            if(val > currentNode.val) {
+                currentNode = currentNode.right;
+            }
+        }
+        return undefined;
+    }
+
     swapParentChild(oldChild, newChild, parent) {
         if (!parent) {
             newChild.parent = null;
