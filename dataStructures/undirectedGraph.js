@@ -62,11 +62,9 @@ class undirectedGraph{
 
         if(!this.adjList[start]) return null;
 
-        let results = [];
+        let results = [start];
         let visited = {};
         let stack = [];
-
-        stack.push(start);
 
         while (stack[0]) {
             const vertex = stack.pop();
@@ -84,6 +82,29 @@ class undirectedGraph{
 
     //BFS: visit siblings before children
     
+    BFS (start) {
+
+        if(!this.adjList[start]) return null;
+
+        let results = [];
+        let visited = {};
+        visited[start] = true;
+        let queue = [start];
+
+        while (queue[0]) {
+            const vertex = queue.shift();
+            results.push(vertex);
+
+            for (const neighbor of this.adjList[vertex]) {
+                if(!visited[neighbor]){
+                    visited[neighbor] = true;
+                    queue.push(neighbor);
+                }
+            }
+        }
+        console.log('res: ', results);
+        return results;
+    }
 }
 
 let graph = new undirectedGraph();
@@ -96,5 +117,5 @@ graph.addEdge('A', 'B');
 // graph.removeEdge('A', 'B');
 // graph.removeVertex('E');
 //graph.DFSrecursive('Y');
-graph.DFSiterative('D');
+graph.BFS('A');
 console.log(graph);
