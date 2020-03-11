@@ -35,23 +35,24 @@ class undirectedGraph{
     }
 
     //DFS: visit children of a node, before visiting siblings
-    DFSrecursive(vertex){
+    DFSrecursive(start){
 
         let results = [];
-        let visited = [];
+        let visited = {};
 
         const recursive = (vertex) => {
+            if(!vertex) return null;
             results.push(vertex);
-            visited.push(vertex);
+            visited[vertex] = true;
+
             for (const neighbor of this.adjList[vertex]) {
-                if(!visited.includes(neighbor)){
+                if(!visited[neighbor]){
                     recursive(neighbor);
                 }
             }
         }
 
-        recursive(vertex);
-
+        recursive(start);
         return results;
     }
 }
@@ -65,5 +66,5 @@ graph.addEdge('A', 'C');
 graph.addEdge('A', 'B');
 // graph.removeEdge('A', 'B');
 // graph.removeVertex('E');
-graph.DFSrecursive('A');
+graph.DFSrecursive('Y');
 console.log(graph);
