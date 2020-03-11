@@ -9,7 +9,7 @@ class Node {
 }
 
 
-class BinarySearchTree {
+class IntervalTree {
     
     constructor() {
         this.root = null;
@@ -114,7 +114,7 @@ for(let i = 0; i < numberElements; i++){
     largeArray.push([x,y]);
 }
 
-let bst = new BinarySearchTree();
-largeArray.forEach(el => bst.insert(el));
+let it = new IntervalTree();
+largeArray.forEach(el => it.insert(el));
 console.log('input array: ', largeArray);
-console.log(bst.getAllIntersections([4, 6]));
+console.log(it.getAllIntersections([4, 6]));

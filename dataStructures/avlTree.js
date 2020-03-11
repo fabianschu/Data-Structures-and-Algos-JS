@@ -43,7 +43,7 @@ class AvlTree {
         }
     }
 
-    getNode(val){
+    findNode(val){
         let currentNode = this.root;
         while (currentNode) {
             if(currentNode.val === val) {
@@ -58,6 +58,8 @@ class AvlTree {
         }
         return undefined;
     }
+
+    //rotation utils
 
     swapParentChild(oldChild, newChild, parent) {
         if (!parent) {
@@ -77,11 +79,50 @@ class AvlTree {
         this.swapParentChild(node, newParent, grandparent);
     
         newParent.left = node; 
-        node.right = undefined; 
-        node.max = node.range[1];
+        node.right = null; 
     
         return newParent; 
     }
+
+    rightRotation(node){
+        const newParent = node.left;
+        const grandparent = node.parent;
+        
+        this.swapParentChild(node, newParent, grandparent);
+
+        newParent.right = node;
+        node.left = null;
+    
+        return newParent;
+    }
+
+    leftRightRotation(node) {
+        this.leftRotation(node.left);
+        return this.rightRotation(node);
+    }
+
+    rightLeftRotation(node) {
+        this.rightRotation(node.right);
+        return this.leftRotation(node);
+    }
+
+    // balance(node) {
+    //     if (node.balanceFactor > 1) {
+    //         // left subtree is higher than right subtree
+    //         if (node.left.balanceFactor > 0) {
+    //             rightRotation(node);
+    //         } else if (node.left.balanceFactor < 0) {
+    //             leftRightRotation(node);
+    //         }
+    //     } else if (node.balanceFactor < -1) {
+    //         // right subtree is higher than left subtree
+    //         if (node.right.balanceFactor < 0) {
+    //             leftRotation(node);
+    //         } else if (node.right.balanceFactor > 0) {
+    //             rightLeftRotation(node);
+    //         }
+    //     }
+    // }
 }
 
 
@@ -89,6 +130,12 @@ const numberOfNodes = 5;
 
 const tree = new AvlTree();
 
-for (let i = 1; i < numberOfNodes; i++) {
-    tree.insert(i);
-}
+// for (let i = 4; i > 0; i--) {
+//     tree.insert(i);
+// }
+
+tree.insert(3);
+tree.insert(1);
+tree.insert(2);
+
+let x = tree.findNode(3);
