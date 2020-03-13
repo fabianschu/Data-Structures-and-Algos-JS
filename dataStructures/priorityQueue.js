@@ -67,3 +67,6 @@ class PriorityQueue {
         return topPrio;
     }
 }
+
+module.exports.PriorityQueue = PriorityQueue;
+module.exports.Node = Node;
