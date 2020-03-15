@@ -15,21 +15,23 @@ class PriorityQueue {
     enqueue(val, prio) {
         let newNode = new Node(val, prio);
         this.values.push(newNode);
+
         let currentIdx = this.values.length - 1;
 
-        while(this.values.length > 1){
-            let currentPrio = this.values[currentIdx].prio;
-            let parentPrio = this.values[Math.floor((currentIdx-1)/2)].prio;
-            if (currentPrio < parentPrio) {
-                swap(this.values ,currentIdx, Math.floor((currentIdx-1)/2));
-                currentIdx = Math.floor((currentIdx-1)/2);
-            }
-            break;
-        }
+        while(currentIdx > 0){
+            const currentPrio = this.values[currentIdx].prio;
 
+            const parentIdx = Math.floor((currentIdx - 1)/2);
+            let parentPrio = this.values[parentIdx].prio;
+
+            if(currentPrio >= parentPrio) break;
+
+            swap(this.values ,currentIdx, parentIdx);
+            currentIdx = parentIdx;
+        }
+        
         return this.values;
     }
-
 
     dequeue() {
         let topPrio = this.values[0];
@@ -66,7 +68,16 @@ class PriorityQueue {
         }
         return topPrio;
     }
+
 }
+
+// let ER = new PriorityQueue();
+// ER.enqueue("common cold",5)
+// ER.enqueue("gunshot wound", 1)
+// ER.enqueue("high fever",4)
+// ER.enqueue("broken arm",2)
+// ER.enqueue("glass in foot",3)
+// console.log(ER);
 
 module.exports.PriorityQueue = PriorityQueue;
 module.exports.Node = Node;
