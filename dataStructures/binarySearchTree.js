@@ -60,13 +60,15 @@ class BinarySearchTree {
     }
 }
 
-let tree = new BinarySearchTree();
-tree.insert(10);
-tree.insert(15);
-tree.insert(7);
-tree.insert(90);
-tree.insert(1200);
-tree.insert(80);
-console.log(tree);
-console.log(tree.find(9));
-console.log(tree.find(15));
+// let tree = new BinarySearchTree();
+// tree.insert(10);
+// tree.insert(15);
+// tree.insert(7);
+// tree.insert(90);
+// tree.insert(1200);
+// tree.insert(80);
+// console.log(tree);
+// console.log(tree.find(9));
+// console.log(tree.find(15));
+
+module.exports.BinarySearchTree = BinarySearchTree;

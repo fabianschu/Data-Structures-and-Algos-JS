@@ -1,20 +1,5 @@
 const { WeightedGraph } = require("../dataStructures/weightedGraph");
 const { Node, PriorityQueue } = require("../dataStructures/priorityQueue");
-// class PriorityQueue {
-//     constructor(){
-//       this.values = [];
-//     }
-//     enqueue(val, priority) {
-//       this.values.push({val, priority});
-//       this.sort();
-//     };
-//     dequeue() {
-//       return this.values.shift();
-//     };
-//     sort() {
-//       this.values.sort((a, b) => a.priority - b.priority);
-//     };
-//   }
 
 class Dijkstra extends WeightedGraph {
 
@@ -27,7 +12,6 @@ class Dijkstra extends WeightedGraph {
         const nodes = new PriorityQueue();
         const distances = {};
         const previous = {};
-        const visited = {};
 
         //returned in the end
         let path = [];
@@ -42,7 +26,6 @@ class Dijkstra extends WeightedGraph {
                 //nodes.enqueue(el, Infinity)
             }
             previous[el] = null;
-            visited[el] = false;
         })
 
         //as long as the priority queue is not empty

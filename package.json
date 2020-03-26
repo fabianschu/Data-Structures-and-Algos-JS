@@ -1,0 +1,19 @@
+{
+  "name": "data-structures-and-algos-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fabianschu/Data-Structures-and-Algos-JS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fabianschu/Data-Structures-and-Algos-JS/issues"
+  },
+  "homepage": "https://github.com/fabianschu/Data-Structures-and-Algos-JS#readme"
+}
