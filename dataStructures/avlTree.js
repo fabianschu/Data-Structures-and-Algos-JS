@@ -4,6 +4,8 @@ class Node {
         this.parent = null;
         this.left = null;
         this.right = null;
+        this.leftHeight = 0;
+        this.rightHeight = 0;
     }
 
     height() {
@@ -45,7 +47,7 @@ class AvlTree {
                 if (!currentNode.left) {
                     newNode.parent = currentNode;
                     currentNode.left = newNode;
-                    this.balanceUpstream(newNode);
+                    //this.balanceUpstream(newNode);
                     return this;
                 }
                 currentNode = currentNode.left;
@@ -53,7 +55,7 @@ class AvlTree {
                 if (!currentNode.right) {
                     newNode.parent = currentNode;
                     currentNode.right = newNode;
-                    this.balanceUpstream(newNode);
+                    //this.balanceUpstream(newNode);
                     return this;
                 }
                 currentNode = currentNode.right;
@@ -153,10 +155,11 @@ class AvlTree {
 // for (let i = 4; i > 0; i--) {
 //     tree.insert(i);
 // }
-
-// tree.insert(1);
-// tree.insert(2);
-// tree.insert(3);
+let tree = new AvlTree();
+tree.insert(3);
+tree.insert(2);
+tree.insert(1);
+console.log(tree);
 // tree.insert(4);
 // console.log(tree);
 

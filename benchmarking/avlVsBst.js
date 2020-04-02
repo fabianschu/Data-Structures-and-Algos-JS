@@ -1,5 +1,5 @@
 const {BinarySearchTree} = require('../dataStructures/binarySearchTree');
-const {AvlTree} = require('../dataStructures/avlTree');
+const {AvlTree} = require('../benchmarking/altAvl');
 
 //large array
 
@@ -44,5 +44,9 @@ let totalFindAvl = (endFindAvl - startFindAvl) / 1000;
 
 console.log('totalInsertBst: ', totalInsertBst);
 console.log('totalInsertAvl: ', totalInsertAvl);
+console.log();
+console.log('heightAvl: ', avl.root.height());
+console.log();
 console.log('totalFindBst: ', totalFindBst);
 console.log('totalFindAvl: ', totalFindAvl);
+
