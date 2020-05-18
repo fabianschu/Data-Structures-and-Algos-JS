@@ -4,24 +4,22 @@ class Node {
         this.parent = null;
         this.left = null;
         this.right = null;
-        this.leftHeight = 0;
-        this.rightHeight = 0;
     }
 
-    height() {
-        return Math.max(this.leftSubtreeHeight(), this.rightSubtreeHeight());
-    } 
-
-    leftSubtreeHeight() {
-        return this.left ? this.left.height() + 1 : 0;
+    get height() {
+        return Math.max(this.leftSubtreeHeight, this.rightSubtreeHeight);
+      }
+      
+    get leftSubtreeHeight() {
+    return this.left ? this.left.height + 1 : 0;
     }
-
-    rightSubtreeHeight() {
-        return this.right ? this.right.height() + 1 : 0;
+    
+    get rightSubtreeHeight() {
+    return this.right ? this.right.height + 1 : 0;
     }
-
-    balanceFactor() {
-        return this.leftSubtreeHeight() - this.rightSubtreeHeight();
+    
+    get balanceFactor() {
+    return this.leftSubtreeHeight - this.rightSubtreeHeight;
     }
 }
 
@@ -47,7 +45,7 @@ class AvlTree {
                 if (!currentNode.left) {
                     newNode.parent = currentNode;
                     currentNode.left = newNode;
-                    //this.balanceUpstream(newNode);
+                    this.balanceUpstream(newNode);
                     return this;
                 }
                 currentNode = currentNode.left;
@@ -55,7 +53,7 @@ class AvlTree {
                 if (!currentNode.right) {
                     newNode.parent = currentNode;
                     currentNode.right = newNode;
-                    //this.balanceUpstream(newNode);
+                    this.balanceUpstream(newNode);
                     return this;
                 }
                 currentNode = currentNode.right;
@@ -124,20 +122,20 @@ class AvlTree {
     }
 
     balance(node) {
-        if (node.balanceFactor() > 1) {
-            // left subtree is higher than right subtree
-            if (node.left.balanceFactor() > 0) {
-                this.rightRotation(node);
-            } else if (node.left.balanceFactor() < 0) {
-                this.leftRightRotation(node);
-            }
-        } else if (node.balanceFactor() < -1) {
-            // right subtree is higher than left subtree
-            if (node.right.balanceFactor() < 0) {
-                this.leftRotation(node);
-            } else if (node.right.balanceFactor() > 0) {
-                this.rightLeftRotation(node);
-            }
+        if (node.balanceFactor > 1) {
+          // left subtree is higher than right subtree
+          if (node.left.balanceFactor > 0) {
+            this.rightRotation(node);
+          } else if (node.left.balanceFactor < 0) {
+            this.leftRightRotation(node);
+          }
+        } else if (node.balanceFactor < -1) {
+          // right subtree is higher than left subtree
+          if (node.right.balanceFactor < 0) {
+            this.leftRotation(node);
+          } else if (node.right.balanceFactor > 0) {
+            this.rightLeftRotation(node);
+          }
         }
     }
 
@@ -156,12 +154,13 @@ class AvlTree {
 //     tree.insert(i);
 // }
 let tree = new AvlTree();
-tree.insert(3);
-tree.insert(2);
-tree.insert(1);
+tree.insert(34);
+tree.insert(87);
+tree.insert(57);
+tree.insert(47);
+tree.insert(40);
+tree.insert(50);
 console.log(tree);
-// tree.insert(4);
-// console.log(tree);
 
 //let x = tree.findNode(3);
 
